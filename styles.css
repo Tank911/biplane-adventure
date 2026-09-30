@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 20;
+}
+
+#restart-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#restart-button:hover {
+    background-color: #0056b3;
+}
+
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 32px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#health-bar {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 200px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+#health-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff0000, #ffff00, #00ff00);
+    border-radius: 8px;
+    transition: width 0.3s ease;
+}
+
+#sound-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#sound-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#controls-toggle {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#controls-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#jump-out-button {
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 165, 0, 0.7);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#jump-out-button:hover {
+    background-color: rgba(255, 165, 0, 0.9);
+}
+
+#jump-out-button:disabled {
+    background-color: rgba(100, 100, 100, 0.5);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#fullscreen-button {
+    position: absolute;
+    top: 20px;
+    right: 170px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#fullscreen-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#level-info {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#mission-progress {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+#level-complete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 100, 0, 0.9);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 25;
+    border: 3px solid gold;
+}
+
+#next-level-button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #FFD700;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#next-level-button:hover {
+    background-color: #FFA500;
+}
+
+#controls-display {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    z-index: 15;
+    display: none;
+    max-width: 300px;
+}
+
+#controls-display h3 {
+    margin: 0 0 10px 0;
+    color: #FFD700;
+    text-align: center;
+}
+
+#controls-display .control-section {
+    margin-bottom: 15px;
+}
+
+#controls-display .control-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+#controls-display .key {
+    background-color: #333;
+    color: #FFF;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Mobile controls */
+#joystick {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    width: 120px;
+    height: 120px;
+    z-index: 100;
+}
+
+#shoot-button {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border: 3px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    touch-action: none;
+}
+
+#shoot-button:active {
+    background-color: rgba(255, 0, 0, 1);
+    transform: scale(0.95);
+}
+
+/* Responsive layout for mobile fullscreen landscape */
+@media (orientation: landscape) and (max-width: 900px) {
+    #shoot-button {
+        /* Anchor just above the bottom right corner */
+        right: 4vw;
+        bottom: 4vw;
+        width: 12vw;
+        height: 12vw;
+        min-width: 64px;
+        min-height: 64px;
+        max-width: 96px;
+        max-height: 96px;
+        font-size: 2.3em;
+        z-index: 110;
+    }
+    #joystick {
+        left: 4vw;
+        bottom: 4vw;
+        width: 18vw;
+        height: 18vw;
+        min-width: 100px;
+        min-height: 100px;
+        max-width: 140px;
+        max-height: 140px;
+        z-index: 110;
+    }
+}
+
+/* Make sure shoot button overlays Three.js canvas in fullscreen */
+:fullscreen #shoot-button,
+:-webkit-full-screen #shoot-button {
+    display: flex !important;
+    position: fixed !important;
+    right: 4vw !important;
+    bottom: 4vw !important;
+    width: 13vw !important;
+    height: 13vw !important;
+    min-width: 68px !important;
+    min-height: 68px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+    font-size: 2.6em !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+/* Ensures joystick overlays in fullscreen mobile */
+:fullscreen #joystick,
+:-webkit-full-screen #joystick {
+    display: block !important;
+    position: fixed !important;
+    left: 4vw !important;
+    bottom: 4vw !important;
+    width: 22vw !important;
+    height: 22vw !important;
+    min-width: 110px !important;
+    min-height: 110px !important;
+    max-width: 160px !important;
+    max-height: 160px !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+}
+
+/* Hide shoot button on desktop */
+@media (min-width: 768px) {
+    #shoot-button {
+        display: none;
+    }
+
+    /* Ensure controls toggle button is visible on desktop */
+    #controls-toggle {
+        display: flex !important;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biplane Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="score">SCORE: 0</div>
+        <div id="level-info">LEVEL 1 - DESTROY 5 ENEMIES</div>
+        <div id="mission-progress">ENEMIES: 0/5</div>
+        <div id="health-bar">
+            <div id="health-fill"></div>
+        </div>
+        <div id="game-over" style="display: none;">
+            <h2>GAME OVER</h2>
+            <button id="restart-button">Restart</button>
+        </div>
+        <div id="level-complete" style="display: none;">
+            <h2>LEVEL COMPLETE!</h2>
+            <p id="level-complete-text">Mission Accomplished!</p>
+            <button id="next-level-button">Next Level</button>
+        </div>
+        <div id="crosshair">+</div>
+        <div id="shoot-button">🔥</div>
+        <div id="sound-toggle">🔊</div>
+        <div id="controls-toggle">❓</div>
+        <div id="jump-out-button">🪂</div>
+        <div id="fullscreen-button">⛶</div>
+        <div id="controls-display">
+            <h3>CONTROLS</h3>
+            <div id="airplane-controls" class="control-section">
+                <div class="control-line"><span class="key">WASD</span><span>Move / Turn</span></div>
+                <div class="control-line"><span class="key">SPACE</span><span>Shoot / Climb</span></div>
+                <div class="control-line"><span class="key">SHIFT</span><span>Descend</span></div>
+                <div class="control-line"><span class="key">E</span><span>Jump Out</span></div>
+                <div class="control-line"><span class="key">H</span><span>Toggle Help</span></div>
+            </div>
+            <div id="person-controls" class="control-section" style="display: none;">
+                <div class="control-line"><span class="key">WASD</span><span>Walk</span></div>
+                <div class="control-line"><span class="key">SPACE</span><span>Shoot</span></div>
+                <div class="control-line"><span class="key">E</span><span>Enter Plane</span></div>
+                <div class="control-line"><span class="key">H</span><span>Toggle Help</span></div>
+            </div>
+        </div>
+    </div>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js"></script>
+    <script src="game.js" type="module"></script>
+</body>
+</html>
